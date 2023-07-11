@@ -1,0 +1,28 @@
+{% load static tailwind_tags %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,600,1,0" />
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    {% tailwind_css %}
+    <title>BlogSpot</title>
+    {% include 'django_quill/media.html' %}
+</head>
+
+<body>
+    {% include 'partials/_header.html' %}
+    <div class="max-w-[1640px] mx-auto md:px-4">
+        {% block contents %}
+        {% endblock %}
+    </div>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script src="{% static 'js/index.js' %}"></script>
+
+</html>

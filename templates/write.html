@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block contents %}
+<div class="flex py-8 px-4 poppins justify-center">
+    <div class="max-w-[720px]">
+        <h1 class="lg:text-5xl md:text-4xl text-3xl font-bold">Write a blog</h1>
+        <form class="my-6 flex flex-col gap-y-3 h-[70vh]" action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <label class="text-lg font-medium" for="">Blog Title</label>
+            <input class="rounded-md mb-4 border-[#ccc]" name="title" type="text" required>
+            <label class="text-lg font-medium" for="">Cover Image</label>
+            <input class="mb-4" type="file" name="image" id="" accept="image/png, image/jpeg" required>
+            <label class="text-lg font-medium" for="">Content</label>
+            {{ form.content }}
+            <input class="z-10 w-[150px] cursor-pointer py-3 bg-[#6035ff] text-white rounded-md" type="submit"
+                value="CREATE BLOG">
+        </form>
+    </div>
+</div>
+{% endblock contents %}

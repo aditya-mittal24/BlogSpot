@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block contents %}
+{% if featured %}
+<div class="mx-auto cursor-pointer relative overflow-hidden rounded-lg w-full h-[85vh]">
+    <a href="blog/{{featured.id}}">
+        <img class="mx-auto object-cover h-full w-full rounded-lg" src="/media/{{featured.image}}" alt="">
+        <div class="text-white md:mx-6 poppins absolute lg:bottom-28 md:bottom-36 bottom-48 left-10">
+            <h2 class="text-3xl font-medium mb-3">Featured</h2>
+            <h1 class="lg:text-5xl md:text-4xl text-3xl font-semibold">{{featured.title}}:</h1>
+            <h1 class="lg:text-5xl md:text-4xl text-3xl font-semibold">{{featured.user.first_name}}
+                {{featured.user.last_name}}</h1>
+        </div>
+        <div class="arrow absolute bottom-28 right-10 text-6xl font-light text-white">
+            <span class="material-symbols-outlined font-60 hover:scale-125 duration-200">
+                arrow_forward
+            </span>
+        </div>
+    </a>
+</div>
+{% endif %}
+
+<div id="blogs" class="my-12 md:px-12 px-6 poppins">
+    <h3 class="text-2xl font-semibold poppins">Recent Blog Posts</h3>
+    {% if blogs %}
+    <div id="content" class="grid gap-8 justify-items-center lg:grid-cols-3 md:grid-cols-2 my-8">
+        {% for blog in blogs %}
+        <a href="blog/{{blog.id}}">
+            <div class="card rounded-lg mb-4 overflow-hidden max-w-[360px] cursor-pointer">
+                <img class="rounded-lg h-[240px] hover:scale-105 object-cover duration-200" src="/media/{{blog.image}}"
+                    alt="">
+                <h2 class="text-lg my-2 font-medium">{{blog.title}}</h2>
+                <h3>{{blog.user.first_name}} {{blog.user.last_name}} ● {{blog.created_at | date:"d N Y"}}</h3>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+    <div class="flex justify-center items-center">
+        <div class="loader hidden h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
+            role="status">
+            <span
+                class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Loading...</span>
+        </div>
+
+        <button class="mx-auto load-btn px-5 py-3 text-lg bg-black text-white rounded-md">Load More</button>
+    </div>
+
+    {{total_blogs|json_script:"json-total"}}
+
+    {% endif %}
+</div>
+{% endblock contents %}

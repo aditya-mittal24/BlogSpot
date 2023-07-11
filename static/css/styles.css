@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4&display=swap');
+
+.poppins {
+    font-family: 'Poppins', sans-serif;
+}
+
+.serif {
+    font-family: 'Source Serif 4', serif;
+}
+
+.image {
+    background-image: url('https://images.pexels.com/photos/1995730/pexels-photo-1995730.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    min-width: 140px;
+    z-index: 1;
+    transition: 1s;
+    background-color: white;
+}
+
+.dropdown {
+    transition: 1s;
+}
+
+.dropdown:hover .dropdown-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.font-60 {
+    font-size: 60px !important;
+}
+
+.django-quill-widget-container{
+    height: 150px;
+    margin-bottom: 80px;
+}
+
+.ql-toolbar{
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    padding: 12px !important;
+}
+
+.ql-container{
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    position: static;
+}
