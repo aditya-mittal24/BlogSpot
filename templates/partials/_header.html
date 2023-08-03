@@ -34,8 +34,8 @@
                     </span>
                 </div>
                 <div class="dropdown-content left-[-50%] rounded-md border-black border">
-                    <a class="p-2 text-center flex items-center gap-2" href="">My Blogs</a>
-                    <a class="p-2 text-center flex items-center gap-2" href="">Saved Blogs</a>
+                    <a class="p-2 text-center flex items-center gap-2" href="{% url 'my_blogs' %}">My Blogs</a>
+                    <a class="p-2 text-center flex items-center gap-2" href="{% url 'saved_blogs' %}">Saved Blogs</a>
                 </div>
             </div>
             <!-- <a class="flex items-center dropdown" href="#blogs">Blogs <span class="material-symbols-outlined">
@@ -49,7 +49,7 @@
     <div class="flex items-center gap-6">
         <a href="{% url 'write' %}">
             <i class="fa-regular fa-pen-to-square"></i>
-              Write
+            Write
         </a>
         <div class="dropdown profile">
             <div class="flex items-center font-medium cursor-pointer">

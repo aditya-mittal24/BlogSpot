@@ -66,7 +66,7 @@ function loadMoreBlogs() {
                                                 <h3>${blog.user[0].first_name} ${blog.user[0].last_name} ● ${date} ${month} ${year}</h3>
                                             </div>
                                         </a>`;
-      });
+      }); 
       if (current_item + blogs.length != total) {
         $(".load-btn").removeClass("hidden");
       }
