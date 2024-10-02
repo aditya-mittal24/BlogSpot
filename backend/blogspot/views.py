@@ -43,3 +43,5 @@ class ProtectedView(APIView):
     
     def get(self, request):
         return Response("Secret message", status=status.HTTP_200_OK)
+
+

@@ -4,6 +4,8 @@ node_modules
 
 coverage
 
+db.sqlite3
+
 build
 
 .DS_Store
