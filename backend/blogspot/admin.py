@@ -6,3 +6,6 @@ from .models import *
 admin.site.register(User)
 admin.site.register(Blog)
 admin.site.register(Tag)
+admin.site.register(Collection)
+admin.site.register(Like)
+admin.site.register(Bookmark)
