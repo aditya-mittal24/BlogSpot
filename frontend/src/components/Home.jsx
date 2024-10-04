@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { useContext } from "react";
+import AuthContext from "../context/AuthContext";
 
 function Home() {
-  return (
-    <div className='text-black'>Home</div>
-  )
+  let { name } = useContext(AuthContext);
+  return <div className="text-black">Hello {name}!</div>;
 }
 
-export default Home
+export default Home;
