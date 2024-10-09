@@ -22,14 +22,22 @@ export const AuthProvider = ({ children }) => {
             // console.log(jwtDecode(data.access))
             setUser(data.user)
             setAuthTokens({access: data.access, refresh: data.refresh})
+            console.log(authTokens);
+            localStorage.setItem('authTokens', JSON.stringify(authTokens))
+            return true;
+        } else {
+            console.log(response);
+            return false;
         }
     } catch (error) {
-        console.log("Login failed", error)
+        console.log("Login failed", error);
+        return false;
     }
   }
 
   let contextData = {
     loginUser: loginUser,
+    user: user
   };
 
   return (
