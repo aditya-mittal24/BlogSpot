@@ -6,7 +6,7 @@ const PrivateRoute = () => {
     const {user} = useContext(AuthContext);
     const location = useLocation();
 
-	return user ? <Outlet /> : <Navigate to="/login"  replace state={{ from: location }} />;
+	return user ? <Outlet /> : <Navigate to="/login" state={{ from: location }} />;
 }
 
 export default PrivateRoute

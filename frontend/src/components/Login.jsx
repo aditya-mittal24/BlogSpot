@@ -1,7 +1,13 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import AuthContext from "../context/AuthContext";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const Login = () => {
+    useEffect(() => {
+        document.title = 'Login';
+      }, []);
+  const navigate = useNavigate();
+  const { state } = useLocation();
   const { loginUser } = useContext(AuthContext);
   const [formData, setFormData] = useState({
     email: "",
@@ -18,11 +24,18 @@ const Login = () => {
   const submitForm = async () => {
     let error = validateForm(formData);
     setErrors(error);
-    if (!errors) {
+    if (!error) {
       let response = await loginUser(formData.email, formData.password);
       console.log(response);
       if (response === null) {
-        setErrors("Invalid credentials!");
+        setErrors("Invalid email or password");
+      } else {
+        console.log(state)
+        if (state){
+            navigate(state.from);
+        } else {
+            navigate('/')
+        }
       }
     }
   };
