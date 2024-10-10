@@ -33,14 +33,17 @@ class LoginView(APIView):
             refresh = RefreshToken.for_user(user)
             return Response({
                 'user': UserSerializer(user).data,
-                'refresh': str(refresh),
-                'access': str(refresh.access_token),
+                'tokens': {
+                    'refresh': str(refresh),
+                    'access': str(refresh.access_token),
+                }
             }, status=status.HTTP_200_OK)
         return Response({"message": "Invalid credentials"}, status=status.HTTP_401_UNAUTHORIZED)
-    
+
+
 class UserView(APIView):
     permission_classes = [IsAuthenticated]
-    
+
     def get(self, request, pk):
         user = User.objects.get(pk=pk)
         serializer = UserSerializer(user)
@@ -49,7 +52,6 @@ class UserView(APIView):
 
 class ProtectedView(APIView):
     permission_classes = [IsAuthenticated]
-    
+
     def get(self, request):
         return Response("Secret message", status=status.HTTP_200_OK)
-

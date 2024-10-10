@@ -11,33 +11,31 @@ export const AuthProvider = ({ children }) => {
   const [authTokens, setAuthTokens] = useState(null);
 
   const loginUser = async (email, password) => {
-    try {
-        console.log("Form submitted")
-        const response = await axios.post("http://127.0.0.1:8000/api/login/", {
-            email,
-            password,
-        });
-        if (response.status===200){
-            const data = response.data;
-            // console.log(jwtDecode(data.access))
-            setUser(data.user)
-            setAuthTokens({access: data.access, refresh: data.refresh})
-            console.log(authTokens);
-            localStorage.setItem('authTokens', JSON.stringify(authTokens))
-            return true;
-        } else {
-            console.log(response);
-            return false;
-        }
-    } catch (error) {
+    console.log("Form submitted");
+    const loggedUser = await axios
+      .post("http://127.0.0.1:8000/api/login/", {
+        email,
+        password,
+      })
+      .then((response) => {
+        const data = response.data;
+        // console.log(jwtDecode(data.access))
+        console.log(data)
+        setUser(data.user);
+        setAuthTokens(data.tokens);
+        localStorage.setItem("authTokens", JSON.stringify(data.tokens));
+        return data.user;
+      })
+      .catch((error) => {
         console.log("Login failed", error);
-        return false;
-    }
-  }
+        return null;
+      });
+    return loggedUser;
+  };
 
   let contextData = {
     loginUser: loginUser,
-    user: user
+    user: user,
   };
 
   return (
